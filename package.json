@@ -16,17 +16,18 @@
     "typescript",
     "ts"
   ],
-  "author": {
-    "name": "ChatonDeAru",
-    "email": "contact@chatondearu.fr",
-    "url": "https://chatondearu.fr"
-  },
+  "author": "ChatonDeAru <contact@chatondearu.fr> (https://chatondearu.fr)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chatondearu/vue-maplibre.git"
+    "url": "git+https://github.com/chatondearu/vue-maplibre.git"
   },
   "license": "MIT",
   "type": "module",
   "sideEffects": false,
-  "scripts": {}
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/chatondearu/vue-maplibre/issues"
+  },
+  "homepage": "https://github.com/chatondearu/vue-maplibre#readme",
+  "main": "index.js"
 }
