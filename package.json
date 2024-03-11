@@ -1,0 +1,32 @@
+{
+  "name": "vue-maplibre",
+  "version": "0.0.1",
+  "description": "A simple library for Maplibre with vue 3 components, composition api and typescript support",
+  "keywords": [
+    "vue",
+    "vue3",
+    "vuejs",
+    "vue-component",
+    "vue3-component",
+    "maplibre",
+    "maplibre-gl",
+    "map",
+    "mapbox",
+    "mapbox-gl",
+    "typescript",
+    "ts"
+  ],
+  "author": {
+    "name": "ChatonDeAru",
+    "email": "contact@chatondearu.fr",
+    "url": "https://chatondearu.fr"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chatondearu/vue-maplibre.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {}
+}
