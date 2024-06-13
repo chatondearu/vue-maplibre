@@ -23,11 +23,69 @@
   },
   "license": "MIT",
   "type": "module",
+  "packageManager": "pnpm@8.7.6",
   "sideEffects": false,
-  "scripts": {},
   "bugs": {
     "url": "https://github.com/chatondearu/vue-maplibre/issues"
   },
   "homepage": "https://github.com/chatondearu/vue-maplibre#readme",
-  "main": "index.js"
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.mjs",
+      "require": "./dist/components/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "*",
+        "dist/*",
+        "dist/*.d.ts",
+        "dist/*/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "components.d.ts",
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "vite serve playground",
+    "dev:build": "vite build playground",
+    "dev:preview": "vite preview playground",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.6.4",
+    "@types/node": "^20.11.16",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "@vue/tsconfig": "^0.5.1",
+    "eslint": "^8.56.0",
+    "maplibre-gl": "^4.3.2",
+    "mkdist": "^1.4.0",
+    "typescript": "^5.3.3",
+    "unbuild": "2.0.0",
+    "vite": "^5.0.12",
+    "vue": "^3.4.15"
+  },
+  "dependencies": {
+    "@nazka/map-gl-js-spiderfy": "^1.2.1",
+    "@vueuse/core": "^10.10.0",
+    "maplibregl-mapbox-request-transformer": "^0.0.2"
+  }
 }

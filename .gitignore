@@ -1,0 +1,23 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dirs
+.vite
+node_modules
+env-dist
+dev-dist
+dist
+dist-ssr
+storybook-static
+*.local
+
+# Editor directories and files
+.DS_Store
+
+# Other
+TODO.md
+i18n-report.json
