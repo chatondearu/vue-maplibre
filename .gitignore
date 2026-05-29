@@ -6,6 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 
 # Dirs
+.corepack
+.direnv
+.pnpm-home
 .vite
 node_modules
 env-dist

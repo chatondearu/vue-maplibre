@@ -3,3 +3,8 @@ packages:
   - docs
   - packages/*
   - examples/*
+
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
+  vue-demi: true
