@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useSource } from '@/composables/layerSource'
-import { Map, SourceSpecification } from 'maplibre-gl';
-import { inject, nextTick, onBeforeUnmount, onMounted, Ref, ref, toRefs } from 'vue';
+import type { MapDataEvent, MapMouseEvent, Map as MapLibreMap, SourceSpecification } from 'maplibre-gl'
+import { inject, nextTick, onBeforeUnmount, onMounted, type Ref, ref, toRefs } from 'vue'
 
 defineOptions({
   name: 'MapLibreSource',
@@ -25,7 +25,7 @@ interface MapLibreSourceProps {
   source: SourceSpecification
 }
 
-const map = inject<Ref<Map | undefined>>('map', ref())
+const map = inject<Ref<MapLibreMap | null>>('map', ref(null))
 const ready = ref(false)
 const { id } = toRefs(props)
 
@@ -33,25 +33,41 @@ const { removeSource, updateSource, getSource } = useSource(id)
 
 onMounted(() => {
   updateSource(props.source)
-
-  map.value?.on('data', (e) => {
-    if (e.sourceId === id.value && e.isSourceLoaded) {
-      ready.value = true
-    }
-  })
-
-  map.value?.on('click', id.value, onClick)
+  map.value?.on('data', onMapData)
+  map.value?.on('click', onMapClick)
 })
 
 onBeforeUnmount(async () => {
-  map.value?.off('click', id.value, onClick)
+  map.value?.off('data', onMapData)
+  map.value?.off('click', onMapClick)
   ready.value = false
   await nextTick()
   removeSource()
 })
 
-function onClick(event) {
-  emit('click', event)
+function onMapData(event: MapDataEvent) {
+  if (event.sourceId === id.value && event.isSourceLoaded) {
+    ready.value = true
+  }
+}
+
+function onMapClick(event: MapMouseEvent) {
+  const mapRef = map.value
+
+  if (!mapRef) {
+    return
+  }
+
+  const features = mapRef
+    .queryRenderedFeatures(event.point)
+    .filter(feature => feature.source === id.value)
+
+  if (features.length > 0) {
+    emit('click', {
+      event,
+      features,
+    })
+  }
 }
 </script>
 

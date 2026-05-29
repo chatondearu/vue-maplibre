@@ -1,22 +1,23 @@
 <script setup lang="ts">
-import { whenever } from '@vueuse/core';
-import type { Map } from 'maplibre-gl'
-import { inject, Ref } from 'vue';
+import type { ExpressionSpecification, FormattedSpecification, Map, PropertyValueSpecification } from 'maplibre-gl'
+import { inject, onBeforeUnmount, ref, type Ref, watch } from 'vue'
 
 defineOptions({
   name: 'MapLibreLocale',
 })
 
-const { locale } = useI18n()
-const map = inject<Ref<Map>>('map')
+const map = inject<Ref<Map | null>>('map', ref(null))
+const locale = ref(getDefaultLocale())
 
 function updateTextFieldsInLayers(map: Map, locale: string) {
   // Update the text-field property of all symbol layers
-  map.getStyle().layers.forEach((layer) => {
+  const layers = map.getStyle().layers ?? []
+
+  layers.forEach((layer) => {
     if (layer.type === 'symbol') {
       const layerTextFieldProp = map.getLayoutProperty(layer.id, 'text-field')
 
-      if (layerTextFieldProp[0] === 'coalesce' || layerTextFieldProp[0] === 'get') {
+      if (isExpressionLayoutProperty(layerTextFieldProp)) {
         // check if the text-field property is already a coalesce or a simple get function
         // and add the locale to a new coalesce function
 
@@ -53,22 +54,41 @@ function updateTextFieldsInLayers(map: Map, locale: string) {
   })
 }
 
-if (map) {
-  whenever(map, (map) => {
-    // Add RTL support if you want to support Arabic
-    // mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.10.1/mapbox-gl-rtl-text.js');
-
-    updateTextFieldsInLayers(map, locale.value)
-  })
-}
-
-whenever(locale, (locale) => {
-  if (!map) {
+watch([map, locale], ([mapRef, localeRef]) => {
+  if (!mapRef) {
     return
   }
 
-  updateTextFieldsInLayers(map.value, locale)
+  updateTextFieldsInLayers(mapRef, localeRef)
+}, { immediate: true })
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('languagechange', updateLocale)
+}
+
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('languagechange', updateLocale)
+  }
 })
+
+function getDefaultLocale() {
+  if (typeof navigator !== 'undefined' && navigator.language) {
+    return navigator.language
+  }
+
+  return 'en'
+}
+
+function updateLocale() {
+  locale.value = getDefaultLocale()
+}
+
+function isExpressionLayoutProperty(
+  value: PropertyValueSpecification<FormattedSpecification> | undefined,
+): value is ExpressionSpecification {
+  return Array.isArray(value) && (value[0] === 'coalesce' || value[0] === 'get')
+}
 </script>
 
 <template>
