@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { whenever } from '@vueuse/core'
+import type { Map, MarkerOptions } from 'maplibre-gl'
 import { LngLat, Marker } from 'maplibre-gl'
-import { inject, onMounted, onUnmounted, provide, reactive, ref, toRefs, watch } from 'vue'
+import { inject, onMounted, onUnmounted, provide, ref, type Ref, toRefs, watch } from 'vue'
 
 defineOptions({
   name: 'MapLibreMarker',
@@ -42,19 +43,9 @@ const {
   rotationAlignment,
 } = toRefs(props)
 
-const options = reactive({
-  anchor,
-  offset,
-  draggable,
-  clickTolerance,
-  rotation,
-  pitchAlignment,
-  rotationAlignment,
-})
-
-const map = inject('map', ref(null))
-const marker = ref()
-const element = ref()
+const map = inject<Ref<Map | null>>('map', ref(null))
+const marker = ref<Marker | null>(null)
+const element = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   const el = element.value
@@ -64,19 +55,33 @@ onMounted(() => {
   }
 })
 
-function initMarker(el) {
+function initMarker(el: HTMLElement) {
+  const mapRef = map.value
+
+  if (!mapRef) {
+    return
+  }
+
   if (marker.value) {
     marker.value.remove()
   }
 
-  el.style.zIndex = props.zIndex
+  el.style.zIndex = String(props.zIndex)
 
-  const markerInstance = new Marker({
-    ...options,
+  const markerOptions: MarkerOptions = {
+    anchor: anchor.value,
+    offset: offset.value,
+    draggable: draggable.value,
+    clickTolerance: clickTolerance.value,
+    rotation: rotation.value,
+    pitchAlignment: pitchAlignment.value,
+    rotationAlignment: rotationAlignment.value,
     element: el,
-  })
+  }
+
+  const markerInstance = new Marker(markerOptions)
     .setLngLat(lngLat.value)
-    .addTo(map.value)
+    .addTo(mapRef)
 
   el.addEventListener('click', onClick)
   el.addEventListener('mouseenter', onMouseEnter)
@@ -114,7 +119,7 @@ provide('marker', marker)
 </script>
 
 <template>
-  <div v-if="$slots.element" ref="element">
+  <div ref="element">
     <slot name="element">
       <div class="h-2 w-2 bg-red-500" />
     </slot>

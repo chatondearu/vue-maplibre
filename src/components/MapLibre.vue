@@ -5,7 +5,7 @@ import {
 } from 'maplibregl-mapbox-request-transformer'
 import type { LngLatBoundsLike, LngLatLike, MapLibreEvent, MapMouseEvent } from 'maplibre-gl'
 import { Map } from 'maplibre-gl'
-import { computed, inject, onMounted, provide, ref, toRefs, watch } from 'vue'
+import { computed, inject, onBeforeUnmount, onMounted, provide, ref, toRefs, watch } from 'vue'
 import { whenever } from '@vueuse/core'
 import { defaultMapLibreConfig } from '@/utils'
 import type { MapLibreConfig } from '@/utils'
@@ -42,8 +42,8 @@ interface MapLibreProps {
 const { center, zoom, maxZoom, minZoom, bounds, doubleClickZoom }
   = toRefs(props)
 
-const map = ref()
-const container = ref()
+const map = ref<Map | null>(null)
+const container = ref<HTMLElement | null>(null)
 const showI18n = computed(() => props.i18n || maplibreConfig.i18n)
 
 // https://github.com/rowanwins/maplibregl-mapbox-request-transformer
@@ -60,8 +60,14 @@ function transformRequest(url = '', resourceType = '') {
 }
 
 onMounted(() => {
+  const containerRef = container.value
+
+  if (!containerRef) {
+    return
+  }
+
   const mapInstance = new Map({
-    container: 'map',
+    container: containerRef,
     style: maplibreConfig.style,
     transformRequest,
     center: center.value,
@@ -73,41 +79,75 @@ onMounted(() => {
 
   mapInstance.on('load', () => {
     map.value = mapInstance
+    mapInstance.on('move', onMove)
+    mapInstance.on('zoomend', onZoomEnd)
+    mapInstance.on('click', onClick)
     emit('ready', mapInstance)
   })
 })
 
-whenever(
-  map,
-  (map) => {
-    map?.on('move', (event: MapLibreEvent) => {
-      emit('move', {
-        event,
-        center: map.getCenter(),
-        map,
-      })
-    })
+onBeforeUnmount(() => {
+  const mapInstance = map.value
 
-    map?.on('zoomend', (event: MapLibreEvent) =>
-      emit('zoomend', {
-        event,
-        zoom: map.getZoom(),
-        bounds: map.getBounds(),
-        map,
-      }))
+  if (!mapInstance) {
+    return
+  }
 
-    map?.on('click', (event: MapMouseEvent) => {
-      emit('click', {
-        event,
-        lngLat: event.lngLat,
-        map,
-      })
-    })
-  },
-  { immediate: true },
-)
+  mapInstance.off('move', onMove)
+  mapInstance.off('zoomend', onZoomEnd)
+  mapInstance.off('click', onClick)
+  mapInstance.remove()
+  map.value = null
+})
+
+function onMove(event: MapLibreEvent) {
+  const mapInstance = map.value
+
+  if (!mapInstance) {
+    return
+  }
+
+  emit('move', {
+    event,
+    center: mapInstance.getCenter(),
+    map: mapInstance,
+  })
+}
+
+function onZoomEnd(event: MapLibreEvent) {
+  const mapInstance = map.value
+
+  if (!mapInstance) {
+    return
+  }
+
+  emit('zoomend', {
+    event,
+    zoom: mapInstance.getZoom(),
+    bounds: mapInstance.getBounds(),
+    map: mapInstance,
+  })
+}
+
+function onClick(event: MapMouseEvent) {
+  const mapInstance = map.value
+
+  if (!mapInstance) {
+    return
+  }
+
+  emit('click', {
+    event,
+    lngLat: event.lngLat,
+    map: mapInstance,
+  })
+}
 
 watch(doubleClickZoom, (doubleClickZoom) => {
+  if (doubleClickZoom == null) {
+    return
+  }
+
   if (doubleClickZoom) {
     map.value?.doubleClickZoom.enable()
   } else {
@@ -123,11 +163,15 @@ whenever(center, (center) => {
   map.value?.setCenter(center)
 })
 
+whenever(zoom, (zoom) => {
+  map.value?.setZoom(zoom)
+})
+
 provide('map', map)
 </script>
 
 <template>
-  <div id="map" ref="container" class="relative h-full w-full flex-1">
+  <div ref="container" class="relative h-full w-full flex-1">
     <MapLibreLocale v-if="showI18n" />
     <slot v-if="map" :map="map" />
   </div>

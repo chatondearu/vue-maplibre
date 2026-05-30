@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { AddLayerObject, FilterSpecification, Map, MapLayerMouseEvent, Painter, StyleImage } from 'maplibre-gl'
-import { inject, onBeforeUnmount, onMounted, reactive, ref, Ref, toRefs, watch } from 'vue';
-import { whenever } from '@vueuse/core';
-import { loadImage } from '~/utils/image';
+import { inject, onBeforeUnmount, onMounted, ref, type Ref, toRefs, watch } from 'vue'
+import { whenever } from '@vueuse/core'
+import { loadImage } from '@/utils/image'
 
 defineOptions({
   name: 'MapLibreLayer',
@@ -64,20 +64,6 @@ const {
 } = toRefs(props)
 
 const ready = ref(false)
-
-const layerOptions = reactive({
-  id,
-  beforeId,
-  type,
-  layout,
-  filter,
-  maxzoom,
-  minzoom,
-  metadata,
-  paint,
-  'source': source || id,
-  'source-layer': sourceLayer,
-})
 
 watch([maxzoom, minzoom], ([maxzoom, minzoom]) =>
   map.value?.setLayerZoomRange(id.value, maxzoom, minzoom))
@@ -156,6 +142,20 @@ function removeLayer() {
 }
 
 function setLayer() {
+  const layerOptions = {
+    id: id.value,
+    beforeId: beforeId.value,
+    type: type.value,
+    layout: layout.value,
+    filter: filter.value,
+    maxzoom: maxzoom.value,
+    minzoom: minzoom.value,
+    metadata: metadata.value,
+    paint: paint.value,
+    source: source.value ?? id.value,
+    'source-layer': sourceLayer.value,
+  }
+
   map.value?.addLayer(
     Object.entries(layerOptions).reduce((acc, [key, value]) => {
       if (typeof value !== 'undefined' && value !== null) {
