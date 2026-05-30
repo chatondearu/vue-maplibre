@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a reproducible bug
+title: "bug: "
+labels:
+  - type:bug
+  - priority:P1
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please provide enough details to reproduce it.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is happening?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Exact steps, with expected vs actual behavior.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      placeholder: e.g. 0.0.1
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, OS, bundler, Vue version, MapLibre version.
+    validations:
+      required: true
