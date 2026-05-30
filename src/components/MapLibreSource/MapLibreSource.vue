@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSource } from '@/composables/layerSource'
+import { useSource } from '../../composables/layerSource'
 import type { MapDataEvent, MapMouseEvent, Map as MapLibreMap, SourceSpecification } from 'maplibre-gl'
 import { inject, nextTick, onBeforeUnmount, onMounted, type Ref, ref, toRefs } from 'vue'
 

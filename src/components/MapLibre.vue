@@ -7,10 +7,10 @@ import type { LngLatBoundsLike, LngLatLike, MapLibreEvent, MapMouseEvent } from 
 import { Map } from 'maplibre-gl'
 import { computed, inject, onBeforeUnmount, onMounted, provide, ref, toRefs, watch } from 'vue'
 import { whenever } from '@vueuse/core'
-import { defaultMapLibreConfig } from '@/utils'
-import type { MapLibreConfig } from '@/utils'
+import { defaultMapLibreConfig } from '../utils'
+import type { MapLibreConfig } from '../utils'
 
-import MapLibreLocale from '@/components/MapLibreLocale.vue'
+import MapLibreLocale from './MapLibreLocale.vue'
 
 defineOptions({
   name: 'MapLibre',

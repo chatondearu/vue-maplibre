@@ -2,9 +2,11 @@
 import Spiderfy from '@nazka/map-gl-js-spiderfy'
 
 import type { GeoJSONFeature, Map, MapLayerMouseEvent, MapMouseEvent } from 'maplibre-gl'
-import { useSource } from '@/composables/layerSource'
+import { useSource } from '../../composables/layerSource'
 import { computed, inject, onBeforeUnmount, onMounted, Ref, ref, shallowRef, toRefs, watch } from 'vue';
 import { whenever } from '@vueuse/core';
+import MapLibreLayer from '../MapLibreLayer.vue'
+import MapLibreSource from './MapLibreSource.vue'
 
 defineOptions({
   name: 'MapLibreSourceGeojson',

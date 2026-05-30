@@ -1,6 +1,8 @@
 <script setup>
 import { MapboxLayer } from '@deck.gl/mapbox'
 import { FlowmapLayer } from '@fluctuo/layers'
+import { inject, onBeforeUnmount, onMounted, reactive, ref, toRefs, unref } from 'vue'
+import { whenever } from '@vueuse/core'
 
 defineOptions({
   name: 'FlowMapLayer',

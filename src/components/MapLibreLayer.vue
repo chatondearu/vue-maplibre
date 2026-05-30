@@ -2,7 +2,7 @@
 import type { AddLayerObject, FilterSpecification, Map, MapLayerMouseEvent, Painter, StyleImage } from 'maplibre-gl'
 import { inject, onBeforeUnmount, onMounted, ref, type Ref, toRefs, watch } from 'vue'
 import { whenever } from '@vueuse/core'
-import { loadImage } from '@/utils/image'
+import { loadImage } from '../utils/image'
 
 defineOptions({
   name: 'MapLibreLayer',
