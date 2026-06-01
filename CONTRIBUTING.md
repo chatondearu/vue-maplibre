@@ -53,6 +53,18 @@ To mirror CI lint behavior exactly before pushing:
 - The `Release` GitHub workflow opens/updates the version PR on `main`.
 - Merging that PR triggers npm publish via **npm Trusted Publisher** (OIDC), not a long-lived token.
 
+### GitHub Actions permissions (required once)
+
+Changesets needs GitHub Actions to open the **Version packages** pull request.
+
+In repository **Settings → Actions → General → Workflow permissions**:
+
+1. Select **Read and write permissions**
+2. Enable **Allow GitHub Actions to create and approve pull requests**
+3. Save
+
+If release fails with `GitHub Actions is not permitted to create or approve pull requests`, this setting is missing.
+
 ### npm Trusted Publisher setup
 
 Configure once on [npmjs.com](https://www.npmjs.com/) for package `vue-maplibre`:
