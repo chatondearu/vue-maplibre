@@ -22,9 +22,12 @@ export default antfu({
     'no-irregular-whitespace': 'warn',
   },
 }, {
-  files: ['playground/src/main.ts'],
-  rules: {
-    'import/order': 'off',
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.mjs', '.cjs', '.ts', '.mts', '.cts', '.tsx', '.jsx', '.vue', '.json'],
+      },
+    },
   },
 }, {
   files: ['**/*.md/*.ts', '**/*.md/*.js', '**/*.md/*.tsx', '**/*.md/*.jsx'],
