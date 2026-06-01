@@ -79,3 +79,5 @@ Configure once on [npmjs.com](https://www.npmjs.com/) for package `vue-maplibre`
 The workflow already exposes `id-token: write` and uses `actions/setup-node` with `registry-url: https://registry.npmjs.org`.
 
 Optional hardening after the first successful publish: in package **Publishing access**, choose **Require two-factor authentication and disallow tokens**.
+
+Provenance attestations are generated automatically when publishing via Trusted Publisher (no `--provenance` flag needed in Changesets).
