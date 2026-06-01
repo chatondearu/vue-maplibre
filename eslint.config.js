@@ -22,6 +22,16 @@ export default antfu({
     'no-irregular-whitespace': 'warn',
   },
 }, {
+  files: ['playground/src/main.ts'],
+  rules: {
+    'import/order': 'off',
+  },
+}, {
+  files: ['**/*.md/*.ts', '**/*.md/*.js', '**/*.md/*.tsx', '**/*.md/*.jsx'],
+  rules: {
+    'import/order': 'off',
+  },
+}, {
   rules: {
     'curly': ['error', 'all'],
     'style/brace-style': ['error', '1tbs', { allowSingleLine: false }],
