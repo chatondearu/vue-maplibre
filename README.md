@@ -7,9 +7,11 @@ Vue 3 components and plugin helpers for building map interfaces with MapLibre GL
 
 ## Status
 
-This project is currently in active development and targets an initial `0.x` release.
+First public release **0.1.0** is prepared via [Changesets](https://github.com/changesets/changesets).
 
-Current priorities are tracked in the [release readiness backlog](https://github.com/chatondearu/vue-maplibre/issues/9).
+- [Documentation](./docs/)
+- [Changelog](./CHANGELOG.md)
+- [Contributing & releases](./CONTRIBUTING.md#release-process)
 
 ## Installation
 

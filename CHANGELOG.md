@@ -7,6 +7,4 @@ and this project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-### Added
-
-- Initial open source governance and quality workflow scaffolding.
+Release notes are generated from Changesets when the "Version packages" pull request is merged on `main`.
