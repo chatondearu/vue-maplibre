@@ -51,4 +51,19 @@ To mirror CI lint behavior exactly before pushing:
 - Create a release note file with `pnpm changeset`.
 - The root package (`vue-maplibre`) must be listed in `pnpm-workspace.yaml` for Changesets to resolve it.
 - The `Release` GitHub workflow opens/updates the version PR on `main`.
-- Merging that PR triggers npm publish (requires `NPM_TOKEN` repository secret).
+- Merging that PR triggers npm publish via **npm Trusted Publisher** (OIDC), not a long-lived token.
+
+### npm Trusted Publisher setup
+
+Configure once on [npmjs.com](https://www.npmjs.com/) for package `vue-maplibre`:
+
+1. Package **Settings** → **Trusted publishing** → **GitHub Actions**
+2. Set:
+   - Organization / user: `chatondearu`
+   - Repository: `vue-maplibre`
+   - Workflow filename: `release.yml` (exact name, including extension)
+3. Save the configuration.
+
+The workflow already exposes `id-token: write` and uses `actions/setup-node` with `registry-url: https://registry.npmjs.org`.
+
+Optional hardening after the first successful publish: in package **Publishing access**, choose **Require two-factor authentication and disallow tokens**.
