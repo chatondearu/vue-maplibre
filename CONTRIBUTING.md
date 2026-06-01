@@ -23,6 +23,11 @@ Or run:
 
 - `pnpm check`
 
+To mirror CI lint behavior exactly before pushing:
+
+- `pnpm install --frozen-lockfile && pnpm lint`
+- or run `pnpm check:ci` for full CI parity checks (lint, typecheck, test, build, docs build)
+
 ## Branch and commit conventions
 
 - Branch naming:
