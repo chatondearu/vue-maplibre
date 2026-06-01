@@ -23,7 +23,7 @@
     },
     "resolveJsonModule": true,
     "types": [
-      "vite/client",
+      "vite/client"
     ],
     "allowImportingTsExtensions": true,
     "allowJs": true,

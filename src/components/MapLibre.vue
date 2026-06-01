@@ -171,9 +171,15 @@ provide('map', map)
 </script>
 
 <template>
-  <div ref="container" class="relative h-full w-full flex-1">
+  <div
+    ref="container"
+    class="relative h-full w-full flex-1"
+  >
     <MapLibreLocale v-if="showI18n" />
-    <slot v-if="map" :map="map" />
+    <slot
+      v-if="map"
+      :map="map"
+    />
   </div>
 </template>
 

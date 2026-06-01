@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NavigationControl } from 'maplibre-gl'
-import { inject, onBeforeUnmount, onMounted, reactive, ref, toRefs } from 'vue';
+import { inject, onBeforeUnmount, onMounted, reactive, ref, toRefs } from 'vue'
 
 defineOptions({
   name: 'MapLibreNavigationControl',

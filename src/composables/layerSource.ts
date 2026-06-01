@@ -1,5 +1,6 @@
 import type { GeoJSONSource, Map, SourceSpecification } from 'maplibre-gl'
-import { inject, ref, Ref } from 'vue'
+import type { Ref } from 'vue'
+import { inject, ref } from 'vue'
 
 export function useSource(id: Ref<string>) {
   const map = inject<Ref<Map | null>>('map', ref(null))
