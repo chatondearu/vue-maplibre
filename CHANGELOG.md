@@ -8,5 +8,5 @@ and this project follows [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
-- Initial open source governance and quality workflow scaffolding.
 
+- Initial open source governance and quality workflow scaffolding.

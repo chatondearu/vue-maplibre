@@ -24,8 +24,8 @@ pnpm add vue-maplibre maplibre-gl
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import VueMapLibre from 'vue-maplibre'
 import App from './App.vue'
+import VueMapLibre from 'vue-maplibre'
 
 const app = createApp(App)
 
@@ -43,7 +43,10 @@ import { MapLibre } from 'vue-maplibre'
 </script>
 
 <template>
-  <MapLibre :center="[10, 40]" :zoom="5" />
+  <MapLibre
+    :center="[10, 40]"
+    :zoom="5"
+  />
 </template>
 ```
 

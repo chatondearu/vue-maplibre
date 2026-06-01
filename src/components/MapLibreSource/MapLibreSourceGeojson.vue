@@ -2,9 +2,10 @@
 import Spiderfy from '@nazka/map-gl-js-spiderfy'
 
 import type { GeoJSONFeature, Map, MapLayerMouseEvent, MapMouseEvent } from 'maplibre-gl'
+import type { Ref } from 'vue'
+import { computed, inject, onBeforeUnmount, onMounted, ref, shallowRef, toRefs, watch } from 'vue'
+import { whenever } from '@vueuse/core'
 import { useSource } from '../../composables/layerSource'
-import { computed, inject, onBeforeUnmount, onMounted, Ref, ref, shallowRef, toRefs, watch } from 'vue';
-import { whenever } from '@vueuse/core';
 import MapLibreLayer from '../MapLibreLayer.vue'
 import MapLibreSource from './MapLibreSource.vue'
 
@@ -246,18 +247,36 @@ function onLayerReady(layerId: string) {
 </script>
 
 <template>
-  <MapLibreSource :id="id" :source="{
-    type: 'geojson',
-    data,
-    ...(geojsonOptions ? geojsonOptions : {}),
-    ...(clusterOptions ? clusterOptions : {}),
-  }">
+  <MapLibreSource
+    :id="id"
+    :source="{
+      type: 'geojson',
+      data,
+      ...(geojsonOptions ? geojsonOptions : {}),
+      ...(clusterOptions ? clusterOptions : {}),
+    }"
+  >
     <template v-if="ready">
-      <MapLibreLayer v-for="(layer, key) in layers" :id="layer.id || id" :key="layer.id || key" :source="id"
-        v-bind="layer" @click="onClick" @mousemove="onMouseMove" @mouseleave="onMouseLeave"
-        @ready="() => onLayerReady(layer.id || id)" />
-      <slot :get-source="() => getSource()" :get-layer="() => map?.getLayer(id)" :clusters="clusters"
-        :features="features" :on-click="onClick" :on-mouse-move="onMouseMove" :on-mouse-leave="onMouseLeave" />
+      <MapLibreLayer
+        v-for="(layer, key) in layers"
+        :id="layer.id || id"
+        :key="layer.id || key"
+        :source="id"
+        v-bind="layer"
+        @click="onClick"
+        @mousemove="onMouseMove"
+        @mouseleave="onMouseLeave"
+        @ready="() => onLayerReady(layer.id || id)"
+      />
+      <slot
+        :get-source="() => getSource()"
+        :get-layer="() => map?.getLayer(id)"
+        :clusters="clusters"
+        :features="features"
+        :on-click="onClick"
+        :on-mouse-move="onMouseMove"
+        :on-mouse-leave="onMouseLeave"
+      />
     </template>
   </MapLibreSource>
 </template>

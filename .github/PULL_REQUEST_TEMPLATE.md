@@ -1,6 +1,6 @@
 ## Summary
 
-- 
+-
 
 ## Linked issue
 
@@ -8,7 +8,7 @@ Closes #
 
 ## Changes
 
-- 
+-
 
 ## Test plan
 

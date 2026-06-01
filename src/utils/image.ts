@@ -56,7 +56,7 @@ export async function loadImage(options: UseImageOptions): Promise<HTMLImageElem
     img.onerror = reject
 
     // check if //domain.com or http://domain.com is a different origin
-    if (/^([\w]+:)?\/\//.test(src) && !src.includes(location.host)) {
+    if (/^(?:\w+:)?\/\//.test(src) && !src.includes(location.host)) {
       img.crossOrigin = 'Anonymous'
       img.onload = () => {
         const imgCors = imgToDataUrl(img)

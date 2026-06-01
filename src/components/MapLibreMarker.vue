@@ -1,24 +1,12 @@
 <script setup lang="ts">
 import { whenever } from '@vueuse/core'
-import type { Map, MarkerOptions } from 'maplibre-gl'
-import { LngLat, Marker } from 'maplibre-gl'
-import { inject, onMounted, onUnmounted, provide, ref, type Ref, toRefs, watch } from 'vue'
+import type { LngLat, Map, MarkerOptions } from 'maplibre-gl'
+import { Marker } from 'maplibre-gl'
+import { type Ref, inject, onMounted, onUnmounted, provide, ref, toRefs, watch } from 'vue'
 
 defineOptions({
   name: 'MapLibreMarker',
 })
-
-interface MapLibreMarkerProps {
-  lngLat: LngLat | [number, number] | { lng: number; lat: number }
-  anchor?: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
-  zIndex?: number
-  offset?: [number, number] | { x: number; y: number }
-  draggable?: boolean
-  clickTolerance?: number
-  rotation?: number
-  pitchAlignment?: 'auto' | 'map' | 'viewport'
-  rotationAlignment?: 'auto' | 'map' | 'viewport'
-}
 
 const props = withDefaults(defineProps<MapLibreMarkerProps>(), {
   anchor: 'center',
@@ -32,6 +20,19 @@ const props = withDefaults(defineProps<MapLibreMarkerProps>(), {
 })
 
 const emit = defineEmits(['click', 'mouseenter', 'mouseleave'])
+
+interface MapLibreMarkerProps {
+  lngLat: LngLat | [number, number] | { lng: number, lat: number }
+  anchor?: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+  zIndex?: number
+  offset?: [number, number] | { x: number, y: number }
+  draggable?: boolean
+  clickTolerance?: number
+  rotation?: number
+  pitchAlignment?: 'auto' | 'map' | 'viewport'
+  rotationAlignment?: 'auto' | 'map' | 'viewport'
+}
+
 const {
   lngLat,
   anchor,
@@ -124,5 +125,8 @@ provide('marker', marker)
       <div class="h-2 w-2 bg-red-500" />
     </slot>
   </div>
-  <slot v-if="marker" :marker="marker" />
+  <slot
+    v-if="marker"
+    :marker="marker"
+  />
 </template>

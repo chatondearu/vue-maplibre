@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { MapDataEvent, Map as MapLibreMap, MapMouseEvent, SourceSpecification } from 'maplibre-gl'
+import { type Ref, inject, nextTick, onBeforeUnmount, onMounted, ref, toRefs } from 'vue'
 import { useSource } from '../../composables/layerSource'
-import type { MapDataEvent, MapMouseEvent, Map as MapLibreMap, SourceSpecification } from 'maplibre-gl'
-import { inject, nextTick, onBeforeUnmount, onMounted, type Ref, ref, toRefs } from 'vue'
 
 defineOptions({
   name: 'MapLibreSource',
@@ -72,5 +72,8 @@ function onMapClick(event: MapMouseEvent) {
 </script>
 
 <template>
-  <slot v-if="ready" :get-source="() => getSource()" />
+  <slot
+    v-if="ready"
+    :get-source="() => getSource()"
+  />
 </template>

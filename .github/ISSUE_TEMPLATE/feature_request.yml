@@ -1,6 +1,6 @@
 name: Feature request
 description: Suggest an improvement
-title: "feat: "
+title: 'feat: '
 labels:
   - type:enhancement
   - priority:P2

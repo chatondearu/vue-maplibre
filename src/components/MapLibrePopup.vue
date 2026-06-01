@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { GeoJSONFeature, LngLatLike, Map, MapLayerMouseEvent, Marker, Offset, PositionAnchor } from 'maplibre-gl'
 import { Popup } from 'maplibre-gl'
-import { inject, onMounted, onUnmounted, reactive, Ref, ref, toRefs, type PropType } from 'vue'
+import type { type PropType, Ref, inject, onMounted, onUnmounted, reactive, ref, toRefs } from 'vue'
 import { whenever } from '@vueuse/core'
 
 defineOptions({
@@ -174,8 +174,14 @@ function setHiglitedFeature(feature: GeoJSONFeature) {
 </script>
 
 <template>
-  <div v-if="$slots.element" ref="element">
-    <slot name="element" :feature="highlighted" />
+  <div
+    v-if="$slots.element"
+    ref="element"
+  >
+    <slot
+      name="element"
+      :feature="highlighted"
+    />
   </div>
   <slot :popup="popup" />
 </template>

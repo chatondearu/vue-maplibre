@@ -2,7 +2,20 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu({
   formatters: true,
-  ignores: ['!**/*', '.yarn', '.storybook/stories_TEMP', '.storybook/.vite', '.vite', 'node_modules', 'coverage', 'storybook-static', 'dist'],
+  ignores: [
+    '.git',
+    '.corepack',
+    '.direnv',
+    '.pnpm-home',
+    '.yarn',
+    '.storybook/stories_TEMP',
+    '.storybook/.vite',
+    '.vite',
+    'node_modules',
+    'coverage',
+    'storybook-static',
+    'dist',
+  ],
 }, {
   files: ['**/*.json'],
   rules: {
