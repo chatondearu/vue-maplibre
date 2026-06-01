@@ -30,6 +30,32 @@ export default antfu({
     },
   },
 }, {
+  files: ['playground/src/main.ts'],
+  rules: {
+    'import/order': ['error', {
+      'groups': [
+        'builtin',
+        'external',
+        ['internal', 'parent', 'sibling', 'index', 'unknown'],
+        'object',
+        'type',
+      ],
+      'pathGroups': [
+        {
+          pattern: 'vue-maplibre',
+          group: 'external',
+          position: 'after',
+        },
+      ],
+      'pathGroupsExcludedImportTypes': ['builtin'],
+      'newlines-between': 'ignore',
+      'alphabetize': {
+        order: 'asc',
+        caseInsensitive: true,
+      },
+    }],
+  },
+}, {
   files: ['**/*.md/*.ts', '**/*.md/*.js', '**/*.md/*.tsx', '**/*.md/*.jsx'],
   rules: {
     'import/order': 'off',
