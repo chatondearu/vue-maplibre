@@ -24,8 +24,8 @@ pnpm add vue-maplibre maplibre-gl
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import VueMapLibre from 'vue-maplibre'
 import App from './App.vue'
+import VueMapLibre from 'vue-maplibre'
 
 const app = createApp(App)
 
@@ -80,6 +80,12 @@ import { MapLibre } from 'vue-maplibre'
 
 - Mapbox URL transformation uses `VITE_MAPBOX_TOKEN` when needed by your style URLs.
 - MapLibre CSS is imported by the map component.
+
+## Documentation
+
+- Getting started and API docs live in `docs/`.
+- Run locally:
+  - `pnpm --filter vue-maplibre-docs dev`
 
 ## Development
 
