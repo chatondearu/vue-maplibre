@@ -2,15 +2,15 @@
 
 ## Exported components
 
-- `MapLibre`
-- `MapLibreControl`
-- `MapLibreLayer`
-- `MapLibreLocale`
-- `MapLibreMarker`
-- `MapLibreNavigationControl`
-- `MapLibrePopup`
-- `MapLibreSource`
-- `MapLibreSourceGeojson`
+- [`MapLibre`](/api/maplibre)
+- [`MapLibreControl`](/api/maplibre-control)
+- [`MapLibreLayer`](/api/maplibre-layer)
+- [`MapLibreLocale`](/api/maplibre-locale)
+- [`MapLibreMarker`](/api/maplibre-marker)
+- [`MapLibreNavigationControl`](/api/maplibre-navigation-control)
+- [`MapLibrePopup`](/api/maplibre-popup)
+- [`MapLibreSource`](/api/maplibre-source)
+- [`MapLibreSourceGeojson`](/api/maplibre-source-geojson)
 
 ## Composition model
 
@@ -30,4 +30,11 @@ Most components forward MapLibre events through Vue emits and include map-relate
 See detailed pages:
 
 - [MapLibre](/api/maplibre)
+- [MapLibreControl](/api/maplibre-control)
+- [MapLibreLayer](/api/maplibre-layer)
+- [MapLibreLocale](/api/maplibre-locale)
+- [MapLibreMarker](/api/maplibre-marker)
+- [MapLibreNavigationControl](/api/maplibre-navigation-control)
+- [MapLibrePopup](/api/maplibre-popup)
+- [MapLibreSource](/api/maplibre-source)
 - [MapLibreSourceGeojson](/api/maplibre-source-geojson)
