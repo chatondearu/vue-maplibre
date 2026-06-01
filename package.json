@@ -73,6 +73,9 @@
     "docs:dev": "pnpm --filter vue-maplibre-docs dev",
     "docs:build": "pnpm --filter vue-maplibre-docs build",
     "docs:preview": "pnpm --filter vue-maplibre-docs preview",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
@@ -93,6 +96,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.4",
+    "@changesets/cli": "^2.31.0",
     "@types/node": "22.19.19",
     "@vitejs/plugin-vue": "^5.0.3",
     "@vitest/coverage-v8": "^2.1.9",
