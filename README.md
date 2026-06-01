@@ -24,8 +24,8 @@ pnpm add vue-maplibre maplibre-gl
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import VueMapLibre from 'vue-maplibre'
 import App from './App.vue'
+import VueMapLibre from 'vue-maplibre'
 
 const app = createApp(App)
 
