@@ -44,3 +44,10 @@ To mirror CI lint behavior exactly before pushing:
 - Add or update tests when behavior changes.
 - Update documentation when public APIs or usage change.
 - Fill the pull request template completely.
+
+## Release process
+
+- Versioning and publishing are managed by Changesets.
+- Create a release note file with `pnpm changeset`.
+- The `Release` GitHub workflow opens/updates the version PR on `main`.
+- Merging that PR triggers npm publish (requires `NPM_TOKEN` repository secret).
