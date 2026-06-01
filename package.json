@@ -1,7 +1,7 @@
 {
   "name": "vue-maplibre",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "packageManager": "pnpm@11.5.0",
   "description": "A simple library for Maplibre with vue 3 components, composition api and typescript support",
   "author": "ChatonDeAru <contact@chatondearu.fr> (https://chatondearu.fr)",
