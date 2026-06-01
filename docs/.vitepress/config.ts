@@ -22,6 +22,13 @@ export default defineConfig({
         items: [
           { text: 'Components Overview', link: '/api/components' },
           { text: 'MapLibre', link: '/api/maplibre' },
+          { text: 'MapLibreControl', link: '/api/maplibre-control' },
+          { text: 'MapLibreLayer', link: '/api/maplibre-layer' },
+          { text: 'MapLibreLocale', link: '/api/maplibre-locale' },
+          { text: 'MapLibreMarker', link: '/api/maplibre-marker' },
+          { text: 'MapLibreNavigationControl', link: '/api/maplibre-navigation-control' },
+          { text: 'MapLibrePopup', link: '/api/maplibre-popup' },
+          { text: 'MapLibreSource', link: '/api/maplibre-source' },
           { text: 'MapLibreSourceGeojson', link: '/api/maplibre-source-geojson' },
         ],
       },
