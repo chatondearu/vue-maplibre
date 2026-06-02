@@ -1,0 +1,38 @@
+.map-demo {
+  width: 100%;
+  min-height: 360px;
+}
+
+.map-demo .maplibregl-map {
+  min-height: 360px;
+}
+
+.demo-block {
+  margin: 1rem 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--vp-c-bg-soft);
+}
+
+.demo-block__preview {
+  padding: 0.75rem;
+  background: var(--vp-c-bg);
+}
+
+.demo-block__summary {
+  cursor: pointer;
+  user-select: none;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+}
+
+.demo-block__summary:hover {
+  color: var(--vp-c-text-1);
+}
+
+.demo-block pre {
+  margin: 0;
+  border-radius: 0;
+}

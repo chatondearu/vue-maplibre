@@ -1,9 +1,17 @@
 import { defineConfig } from 'vitepress'
+import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
   title: 'vue-maplibre',
   description: 'Vue 3 components for MapLibre GL',
   base: '/vue-maplibre/',
+  vite: {
+    resolve: {
+      alias: {
+        'vue-maplibre': fileURLToPath(new URL('../../src/index.ts', import.meta.url)),
+      },
+    },
+  },
   themeConfig: {
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },

@@ -27,13 +27,20 @@ Creates a MapLibre marker and optionally exposes marker content/popup compositio
 
 ## Example
 
-```vue
-<MapLibreMarker
-  :lng-lat="[2.3522, 48.8566]"
-  @click="(marker) => console.log(marker)"
+<script setup lang="ts">
+import DemoBlock from '../.vitepress/components/DemoBlock.vue'
+import MapDemo from '../.vitepress/components/MapDemo.vue'
+import MarkerPopupDemo from '../demos/marker-popup.vue'
+import source from '../demos/marker-popup.vue?raw'
+</script>
+
+<DemoBlock
+  title="Marker component demo"
+  :source="source"
 >
-  <template #element>
-    <div class="h-3 w-3 rounded-full bg-red-500" />
+  <template #default="{ height }">
+    <MapDemo :height="height">
+      <MarkerPopupDemo />
+    </MapDemo>
   </template>
-</MapLibreMarker>
-```
+</DemoBlock>

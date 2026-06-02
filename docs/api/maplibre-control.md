@@ -17,12 +17,20 @@ Default slot is rendered inside the control container.
 
 ## Example
 
-```vue
-<MapLibre>
-  <MapLibreControl position="top-left">
-    <button type="button">
-      Center map
-    </button>
-  </MapLibreControl>
-</MapLibre>
-```
+<script setup lang="ts">
+import DemoBlock from '../.vitepress/components/DemoBlock.vue'
+import MapDemo from '../.vitepress/components/MapDemo.vue'
+import ControlDemo from '../demos/control.vue'
+import source from '../demos/control.vue?raw'
+</script>
+
+<DemoBlock
+  title="Custom control demo"
+  :source="source"
+>
+  <template #default="{ height }">
+    <MapDemo :height="height">
+      <ControlDemo />
+    </MapDemo>
+  </template>
+</DemoBlock>
