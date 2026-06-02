@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'vue-maplibre',
   description: 'Vue 3 components for MapLibre GL',
+  base: '/vue-maplibre/',
   themeConfig: {
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
