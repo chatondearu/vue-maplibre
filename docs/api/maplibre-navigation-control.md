@@ -15,12 +15,20 @@ No custom emit.
 
 ## Example
 
-```vue
-<MapLibre>
-  <MapLibreNavigationControl
-    position="top-right"
-    :show-compass="true"
-    :show-zoom="true"
-  />
-</MapLibre>
-```
+<script setup lang="ts">
+import DemoBlock from '../.vitepress/components/DemoBlock.vue'
+import MapDemo from '../.vitepress/components/MapDemo.vue'
+import NavigationControlDemo from '../demos/navigation-control.vue'
+import source from '../demos/navigation-control.vue?raw'
+</script>
+
+<DemoBlock
+  title="Navigation control demo"
+  :source="source"
+>
+  <template #default="{ height }">
+    <MapDemo :height="height">
+      <NavigationControlDemo />
+    </MapDemo>
+  </template>
+</DemoBlock>

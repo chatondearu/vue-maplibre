@@ -1,22 +1,19 @@
 # Marker and Popup
 
-```vue
 <script setup lang="ts">
-import { MapLibre, MapLibreMarker, MapLibrePopup } from 'vue-maplibre'
+import DemoBlock from '../.vitepress/components/DemoBlock.vue'
+import MapDemo from '../.vitepress/components/MapDemo.vue'
+import MarkerPopupDemo from '../demos/marker-popup.vue'
+import source from '../demos/marker-popup.vue?raw'
 </script>
 
-<template>
-  <MapLibre
-    :center="[2.3522, 48.8566]"
-    :zoom="12"
-  >
-    <MapLibreMarker :lng-lat="[2.3522, 48.8566]">
-      <template #element>
-        <div class="h-3 w-3 rounded-full bg-red-500" />
-      </template>
-
-      <MapLibrePopup text="Paris marker" />
-    </MapLibreMarker>
-  </MapLibre>
-</template>
-```
+<DemoBlock
+  title="Marker + popup demo"
+  :source="source"
+>
+  <template #default="{ height }">
+    <MapDemo :height="height">
+      <MarkerPopupDemo />
+    </MapDemo>
+  </template>
+</DemoBlock>

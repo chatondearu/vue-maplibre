@@ -31,14 +31,20 @@ Default slot receives `get-layer`.
 
 ## Example
 
-```vue
-<MapLibreLayer
-  id="roads"
-  type="line"
-  source="roads-source"
-  :paint="{
-    'line-color': '#2563eb',
-    'line-width': 2,
-  }"
-/>
-```
+<script setup lang="ts">
+import DemoBlock from '../.vitepress/components/DemoBlock.vue'
+import MapDemo from '../.vitepress/components/MapDemo.vue'
+import GeojsonLayerDemo from '../demos/geojson-layer.vue'
+import source from '../demos/geojson-layer.vue?raw'
+</script>
+
+<DemoBlock
+  title="Layer rendering demo"
+  :source="source"
+>
+  <template #default="{ height }">
+    <MapDemo :height="height">
+      <GeojsonLayerDemo />
+    </MapDemo>
+  </template>
+</DemoBlock>

@@ -17,18 +17,20 @@ Default slot receives `get-source`.
 
 ## Example
 
-```vue
-<MapLibreSource
-  id="cities"
-  :source="{
-    type: 'geojson',
-    data: geojson,
-  }"
+<script setup lang="ts">
+import DemoBlock from '../.vitepress/components/DemoBlock.vue'
+import MapDemo from '../.vitepress/components/MapDemo.vue'
+import GeojsonLayerDemo from '../demos/geojson-layer.vue'
+import source from '../demos/geojson-layer.vue?raw'
+</script>
+
+<DemoBlock
+  title="Source lifecycle demo"
+  :source="source"
 >
-  <MapLibreLayer
-    id="cities-circle"
-    type="circle"
-    source="cities"
-  />
-</MapLibreSource>
-```
+  <template #default="{ height }">
+    <MapDemo :height="height">
+      <GeojsonLayerDemo />
+    </MapDemo>
+  </template>
+</DemoBlock>
