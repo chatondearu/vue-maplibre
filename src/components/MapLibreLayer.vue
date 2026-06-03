@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { AddLayerObject, FilterSpecification, Map, MapLayerMouseEvent, Painter, StyleImage } from 'maplibre-gl'
-import { type Ref, inject, onBeforeUnmount, onMounted, ref, toRefs, watch } from 'vue'
+import type { Ref } from 'vue'
 import { whenever } from '@vueuse/core'
+import { inject, onBeforeUnmount, onMounted, ref, toRefs, watch } from 'vue'
 import { loadImage } from '../utils/image'
 
 defineOptions({

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ExpressionSpecification, FormattedSpecification, Map, PropertyValueSpecification } from 'maplibre-gl'
-import { type Ref, inject, onBeforeUnmount, ref, watch } from 'vue'
+import type { Ref } from 'vue'
+import { inject, onBeforeUnmount, ref, watch } from 'vue'
 
 defineOptions({
   name: 'MapLibreLocale',

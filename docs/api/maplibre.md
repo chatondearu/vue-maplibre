@@ -42,12 +42,14 @@ import source from '../demos/maplibre.vue?raw'
 </script>
 
 <DemoBlock
-  title="MapLibre component demo"
-  :source="source"
->
-  <template #default="{ height }">
+title="MapLibre component demo"
+:source="source"
+
+> <template #default="{ height }">
+
     <MapDemo :height="height">
       <MapLibreDemo />
     </MapDemo>
+
   </template>
 </DemoBlock>

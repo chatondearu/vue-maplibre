@@ -23,12 +23,14 @@ import source from '../demos/navigation-control.vue?raw'
 </script>
 
 <DemoBlock
-  title="Navigation control demo"
-  :source="source"
->
-  <template #default="{ height }">
+title="Navigation control demo"
+:source="source"
+
+> <template #default="{ height }">
+
     <MapDemo :height="height">
       <NavigationControlDemo />
     </MapDemo>
+
   </template>
 </DemoBlock>

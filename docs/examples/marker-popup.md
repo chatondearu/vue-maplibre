@@ -8,12 +8,14 @@ import source from '../demos/marker-popup.vue?raw'
 </script>
 
 <DemoBlock
-  title="Marker + popup demo"
-  :source="source"
->
-  <template #default="{ height }">
+title="Marker + popup demo"
+:source="source"
+
+> <template #default="{ height }">
+
     <MapDemo :height="height">
       <MarkerPopupDemo />
     </MapDemo>
+
   </template>
 </DemoBlock>

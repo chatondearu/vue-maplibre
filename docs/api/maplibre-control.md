@@ -25,12 +25,14 @@ import source from '../demos/control.vue?raw'
 </script>
 
 <DemoBlock
-  title="Custom control demo"
-  :source="source"
->
-  <template #default="{ height }">
+title="Custom control demo"
+:source="source"
+
+> <template #default="{ height }">
+
     <MapDemo :height="height">
       <ControlDemo />
     </MapDemo>
+
   </template>
 </DemoBlock>

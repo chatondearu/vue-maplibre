@@ -1,6 +1,8 @@
-import antfu from '@antfu/eslint-config'
+import cda from '@chatondearu/eslint-config'
 
-export default antfu({
+export default cda({
+  imports: true,
+  pnpm: false,
   formatters: true,
   ignores: [
     '.git',
@@ -20,45 +22,6 @@ export default antfu({
   files: ['**/*.json'],
   rules: {
     'no-irregular-whitespace': 'warn',
-  },
-}, {
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.mjs', '.cjs', '.ts', '.mts', '.cts', '.tsx', '.jsx', '.vue', '.json'],
-      },
-    },
-  },
-}, {
-  files: ['playground/src/main.ts'],
-  rules: {
-    'import/order': ['error', {
-      'groups': [
-        'builtin',
-        'external',
-        ['internal', 'parent', 'sibling', 'index', 'unknown'],
-        'object',
-        'type',
-      ],
-      'pathGroups': [
-        {
-          pattern: 'vue-maplibre',
-          group: 'external',
-          position: 'after',
-        },
-      ],
-      'pathGroupsExcludedImportTypes': ['builtin'],
-      'newlines-between': 'ignore',
-      'alphabetize': {
-        order: 'asc',
-        caseInsensitive: true,
-      },
-    }],
-  },
-}, {
-  files: ['**/*.md/*.ts', '**/*.md/*.js', '**/*.md/*.tsx', '**/*.md/*.jsx'],
-  rules: {
-    'import/order': 'off',
   },
 }, {
   rules: {

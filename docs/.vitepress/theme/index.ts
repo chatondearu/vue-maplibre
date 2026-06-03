@@ -1,5 +1,5 @@
-import DefaultTheme from 'vitepress/theme'
 import type { Theme } from 'vitepress'
+import DefaultTheme from 'vitepress/theme'
 import VueMapLibre from 'vue-maplibre'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import './custom.css'

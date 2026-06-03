@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { MapDataEvent, Map as MapLibreMap, MapMouseEvent, SourceSpecification } from 'maplibre-gl'
-import { type Ref, inject, nextTick, onBeforeUnmount, onMounted, ref, toRefs } from 'vue'
+import type { Ref } from 'vue'
+import { inject, nextTick, onBeforeUnmount, onMounted, ref, toRefs } from 'vue'
 import { useSource } from '../../composables/layerSource'
 
 defineOptions({
