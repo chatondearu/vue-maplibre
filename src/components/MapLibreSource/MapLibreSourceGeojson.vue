@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Spiderfy from '@nazka/map-gl-js-spiderfy'
-
 import type { GeoJSONFeature, Map, MapLayerMouseEvent, MapMouseEvent } from 'maplibre-gl'
+
 import type { Ref } from 'vue'
-import { computed, inject, onBeforeUnmount, onMounted, ref, shallowRef, toRefs, watch } from 'vue'
+import Spiderfy from '@nazka/map-gl-js-spiderfy'
 import { whenever } from '@vueuse/core'
+import { computed, inject, onBeforeUnmount, onMounted, ref, shallowRef, toRefs, watch } from 'vue'
 import { useSource } from '../../composables/layerSource'
 import MapLibreLayer from '../MapLibreLayer.vue'
 import MapLibreSource from './MapLibreSource.vue'

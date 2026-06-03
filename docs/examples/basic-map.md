@@ -8,12 +8,14 @@ import source from '../demos/basic-map.vue?raw'
 </script>
 
 <DemoBlock
-  title="Basic map demo"
-  :source="source"
->
-  <template #default="{ height }">
+title="Basic map demo"
+:source="source"
+
+> <template #default="{ height }">
+
     <MapDemo :height="height">
       <BasicMapDemo />
     </MapDemo>
+
   </template>
 </DemoBlock>

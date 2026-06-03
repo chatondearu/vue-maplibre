@@ -1,8 +1,8 @@
 import type { Plugin } from 'vue'
-import { defaultMapLibreConfig } from './utils'
 import type { MapLibreConfig } from './utils'
-
 import MapLibre from './components/MapLibre.vue'
+
+import { defaultMapLibreConfig } from './utils'
 
 export default {
   install: (app, options: MapLibreConfig = defaultMapLibreConfig) => {

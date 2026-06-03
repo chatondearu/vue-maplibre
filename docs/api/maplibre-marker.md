@@ -35,12 +35,14 @@ import source from '../demos/marker-popup.vue?raw'
 </script>
 
 <DemoBlock
-  title="Marker component demo"
-  :source="source"
->
-  <template #default="{ height }">
+title="Marker component demo"
+:source="source"
+
+> <template #default="{ height }">
+
     <MapDemo :height="height">
       <MarkerPopupDemo />
     </MapDemo>
+
   </template>
 </DemoBlock>

@@ -45,12 +45,14 @@ import source from '../demos/geojson-layer.vue?raw'
 </script>
 
 <DemoBlock
-  title="GeoJSON source helper demo"
-  :source="source"
->
-  <template #default="{ height }">
+title="GeoJSON source helper demo"
+:source="source"
+
+> <template #default="{ height }">
+
     <MapDemo :height="height">
       <GeojsonLayerDemo />
     </MapDemo>
+
   </template>
 </DemoBlock>

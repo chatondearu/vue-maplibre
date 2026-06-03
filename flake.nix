@@ -27,18 +27,9 @@
           ];
 
           shellHook = ''
-            export PNPM_HOME="$PWD/.pnpm-home"
-            export PATH="$PNPM_HOME:$PATH"
-            export COREPACK_HOME="$PWD/.corepack"
-            mkdir -p "$PNPM_HOME" "$COREPACK_HOME"
-            corepack enable >/dev/null 2>&1
-            corepack prepare pnpm@${pnpmVersion} --activate >/dev/null 2>&1
-            cat > "$PNPM_HOME/pnpm" <<'EOF'
-#!/usr/bin/env bash
-exec corepack pnpm "$@"
-EOF
-            chmod +x "$PNPM_HOME/pnpm"
-            echo "[nix develop] node=${nodeVersion} pnpm=${pnpmVersion}"
+            # Prefer nixpkgs pnpm over a project-local corepack shim (avoids worker install failures).
+            export PATH="${pkgs.pnpm}/bin:${pkgs.nodejs_22}/bin:$PATH"
+            echo "[nix develop] node=${nodeVersion} pnpm=$(pnpm --version)"
           '';
         };
       }

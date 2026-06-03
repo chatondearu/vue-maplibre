@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import type { LngLatBoundsLike, LngLatLike, MapLibreEvent, MapMouseEvent } from 'maplibre-gl'
+import type { MapLibreConfig } from '../utils'
+import { whenever } from '@vueuse/core'
+import { Map } from 'maplibre-gl'
 import {
   isMapboxURL,
   transformMapboxUrl,
 } from 'maplibregl-mapbox-request-transformer'
-import type { LngLatBoundsLike, LngLatLike, MapLibreEvent, MapMouseEvent } from 'maplibre-gl'
-import { Map } from 'maplibre-gl'
 import { computed, inject, onBeforeUnmount, onMounted, provide, ref, toRefs, watch } from 'vue'
-import { whenever } from '@vueuse/core'
 import { defaultMapLibreConfig } from '../utils'
-import type { MapLibreConfig } from '../utils'
 
 import MapLibreLocale from './MapLibreLocale.vue'
 

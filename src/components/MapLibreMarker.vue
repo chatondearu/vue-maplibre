@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { whenever } from '@vueuse/core'
 import type { LngLat, Map, MarkerOptions } from 'maplibre-gl'
+import type { Ref } from 'vue'
+import { whenever } from '@vueuse/core'
 import { Marker } from 'maplibre-gl'
-import { type Ref, inject, onMounted, onUnmounted, provide, ref, toRefs, watch } from 'vue'
+import { inject, onMounted, onUnmounted, provide, ref, toRefs, watch } from 'vue'
 
 defineOptions({
   name: 'MapLibreMarker',
