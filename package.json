@@ -81,7 +81,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm docs:build",
     "check:ci": "pnpm install --frozen-lockfile && pnpm check && pnpm docs:build",
     "prepublishOnly": "pnpm build"
   },

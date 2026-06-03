@@ -34,11 +34,8 @@ import MarkerPopupDemo from '../demos/marker-popup.vue'
 import source from '../demos/marker-popup.vue?raw'
 </script>
 
-<DemoBlock
-title="Popup component demo"
-:source="source"
-
-> <template #default="{ height }">
+<DemoBlock title="Popup component demo" :source="source">
+  <template #default="{ height }">
 
     <MapDemo :height="height">
       <MarkerPopupDemo />

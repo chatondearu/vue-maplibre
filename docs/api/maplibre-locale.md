@@ -31,11 +31,8 @@ import LocaleDemo from '../demos/locale.vue'
 import source from '../demos/locale.vue?raw'
 </script>
 
-<DemoBlock
-title="Locale handling demo"
-:source="source"
-
-> <template #default="{ height }">
+<DemoBlock title="Locale handling demo" :source="source">
+  <template #default="{ height }">
 
     <MapDemo :height="height">
       <LocaleDemo />

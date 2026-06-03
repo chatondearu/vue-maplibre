@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { GeoJSONFeature, LngLatLike, Map, MapLayerMouseEvent, Marker, Offset, PositionAnchor } from 'maplibre-gl'
-import type { inject, onMounted, onUnmounted, type PropType, reactive, Ref, ref, toRefs } from 'vue'
+import type { PropType, Ref } from 'vue'
 import { whenever } from '@vueuse/core'
 import { Popup } from 'maplibre-gl'
+import { inject, onMounted, onUnmounted, reactive, ref, toRefs } from 'vue'
 
 defineOptions({
   name: 'MapLibrePopup',

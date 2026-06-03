@@ -22,11 +22,8 @@ import NavigationControlDemo from '../demos/navigation-control.vue'
 import source from '../demos/navigation-control.vue?raw'
 </script>
 
-<DemoBlock
-title="Navigation control demo"
-:source="source"
-
-> <template #default="{ height }">
+<DemoBlock title="Navigation control demo" :source="source">
+  <template #default="{ height }">
 
     <MapDemo :height="height">
       <NavigationControlDemo />

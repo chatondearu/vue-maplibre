@@ -7,6 +7,10 @@ import './custom.css'
 const theme: Theme = {
   ...DefaultTheme,
   enhanceApp({ app }) {
+    if (import.meta.env.SSR) {
+      return
+    }
+
     app.use(VueMapLibre, {
       style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
       i18n: true,

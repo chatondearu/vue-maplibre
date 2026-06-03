@@ -24,6 +24,13 @@ export default cda({
     'no-irregular-whitespace': 'warn',
   },
 }, {
+  files: ['docs/api/**/*.md', 'docs/examples/**/*.md'],
+  rules: {
+    'format/prettier': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'vue/first-attribute-linebreak': 'off',
+  },
+}, {
   rules: {
     'curly': ['error', 'all'],
     'style/brace-style': ['error', '1tbs', { allowSingleLine: false }],
