@@ -24,11 +24,8 @@ import GeojsonLayerDemo from '../demos/geojson-layer.vue'
 import source from '../demos/geojson-layer.vue?raw'
 </script>
 
-<DemoBlock
-title="Source lifecycle demo"
-:source="source"
-
-> <template #default="{ height }">
+<DemoBlock title="Source lifecycle demo" :source="source">
+  <template #default="{ height }">
 
     <MapDemo :height="height">
       <GeojsonLayerDemo />

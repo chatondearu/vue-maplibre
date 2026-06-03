@@ -11,6 +11,14 @@ export default defineConfig({
         'vue-maplibre': fileURLToPath(new URL('../../src/index.ts', import.meta.url)),
       },
     },
+    ssr: {
+      noExternal: ['maplibre-gl', '@vueuse/core', '@nazka/map-gl-js-spiderfy'],
+    },
+    build: {
+      commonjsOptions: {
+        transformMixedEsModules: true,
+      },
+    },
   },
   themeConfig: {
     nav: [

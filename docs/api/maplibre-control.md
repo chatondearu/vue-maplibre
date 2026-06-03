@@ -24,11 +24,8 @@ import ControlDemo from '../demos/control.vue'
 import source from '../demos/control.vue?raw'
 </script>
 
-<DemoBlock
-title="Custom control demo"
-:source="source"
-
-> <template #default="{ height }">
+<DemoBlock title="Custom control demo" :source="source">
+  <template #default="{ height }">
 
     <MapDemo :height="height">
       <ControlDemo />
