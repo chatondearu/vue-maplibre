@@ -10,3 +10,7 @@ pnpm = "11.5.0"
 # Prefer prebuilt Node binaries. On NixOS enable nix-ld (or fall back to
 # `nix develop`); do not rely on Mise compiling Node from source.
 all_compile = false
+
+[env]
+# Load dotenv if present (replaces direnv dotenv_if_exists).
+_.file = [".env", ".env.local"]
