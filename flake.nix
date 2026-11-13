@@ -1,5 +1,6 @@
 {
   description = "vue-maplibre development environment";
+  # Daily Node/pnpm: prefer Mise (mise.toml). This flake remains the hermetic fallback.
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";

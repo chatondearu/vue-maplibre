@@ -24,7 +24,12 @@ This document helps contributors and coding agents work safely and consistently 
 
 ## Local Setup
 
+Prefer host / activated **Mise** (`mise.toml`) for Node and pnpm. Use
+`nix develop` / direnv flake only as a hermetic fallback when Mise is missing
+or the wrong version is on PATH.
+
 ```bash
+mise install   # optional if tools already match
 pnpm install
 pnpm dev
 ```
